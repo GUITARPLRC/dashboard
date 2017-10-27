@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './Todo.css';
 
+// TODO add mongoDB for list management or connect to todoist or another api
+
 class Todo extends Component {
 	constructor() {
 		super();
