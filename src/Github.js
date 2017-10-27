@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 
+import './Github.css';
+
 class Github extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			public: 0,
 			list: [],
 			totalCommits: 0
 		};
 	}
 
 	componentDidMount() {
+		fetch('https://api.github.com/users/guitarplrc')
+			.then(info => info.json())
+			.then(items => this.setState({ public: items.public_repos }));
+
 		let reposURL = 'https://api.github.com/users/guitarplrc/repos';
 		fetch(reposURL)
 			.then(info => info.json())
@@ -26,6 +33,7 @@ class Github extends Component {
 				.then(list => list.json())
 				.then(newList => total.push(newList.length))
 				.then(() => this.countCommits(total));
+			return true;
 		});
 	};
 
@@ -38,7 +46,19 @@ class Github extends Component {
 	};
 
 	render() {
-		return this.state.totalCommits > 0 && <div className="Github">{this.state.totalCommits}</div>;
+		return (
+			this.state.totalCommits > 0 && (
+				<div className="Github">
+					<h3>
+						<a href="https://github.com/guitarplrc" target="_blank" rel="noopener noreferrer">
+							Github
+						</a>
+					</h3>
+					<p>Repos: {this.state.public}</p>
+					<p>Commits: {this.state.totalCommits}</p>
+				</div>
+			)
+		);
 	}
 }
 
