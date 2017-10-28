@@ -32,6 +32,20 @@ class Todo extends Component {
 			});
 	}
 
+	updateDB = () => {
+		const client = new stitch.StitchClient('dashboard-befkv');
+		const db = client.service('mongodb', 'mongodb-atlas').db('dashboard');
+		client
+			.login()
+			.then(() => db.collection('list').insertOne(this.state.list))
+			.then(() => {
+				console.log('saved');
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
 	handleInputChange = e => {
 		this.setState({ input: e.target.value });
 	};
@@ -40,6 +54,7 @@ class Todo extends Component {
 		let list = this.state.list;
 		list.push(this.state.input);
 		this.setState({ list, input: '' });
+		this.updateDB();
 	};
 
 	handleDelete = item => {
