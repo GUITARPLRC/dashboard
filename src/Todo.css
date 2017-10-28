@@ -8,11 +8,12 @@
 	flex-direction: column;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
+	overflow: hidden;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	width: 300px;
+	max-width: 300px;
 }
 .Todo input {
 	padding: 5px;

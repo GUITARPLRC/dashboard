@@ -29,6 +29,7 @@ class Weather extends Component {
 			);
 	};
 
+	// TODO change from geolocation google
 	componentDidMount() {
 		if ('geolocation' in navigator) {
 			navigator.geolocation.getCurrentPosition(this.success, err => {
