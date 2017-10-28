@@ -1,19 +1,15 @@
-.Githubjobs {
-	background-color: #24292e;
+.Authjobs {
+	background-color: rgb(80, 117, 228);
 	border-radius: 10px;
 	color: #fff;
-	height: 800px;
+	max-height: 800px;
 	margin: 10px 0;
 	overflow-y: scroll;
 	padding: 2px 0;
 	text-align: center;
 	width: 300px;
 }
-a {
-	color: #fff;
-	text-decoration: none;
-}
-.job {
+.authjob {
 	border: 1px solid #fff;
 	margin: 10px;
 	padding: 0 0 10px 0;

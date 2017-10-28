@@ -39,14 +39,13 @@ class Todo extends Component {
 					}}
 				>
 					<input value={this.state.input} onChange={this.handleInputChange} />
-					<button type="submit">Add</button>
 				</form>
 				{this.state.list && (
 					<div className="list">
 						<ul>
 							{this.state.list.map((each, key) => (
 								<li key={key} onDoubleClick={() => this.handleDelete(key)}>
-									{each} <span>&times;</span>
+									{each}
 								</li>
 							))}
 						</ul>
