@@ -12,7 +12,7 @@ class Authjobs extends Component {
 
 	componentDidMount() {
 		fetch(
-			'https://authenticjobs.com/api/?api_key=4f1b43183c38b3afc3936d34404c4ab0&format=json&method=aj.jobs.search&keywords=web&location=chicagoilus'
+			'https://authenticjobs.com/api/?api_key=4f1b43183c38b3afc3936d34404c4ab0&format=json&method=aj.jobs.search&keywords=web,javascript&location=chicagoilus'
 		)
 			.then(res => res.json())
 			.then(info => this.setState({ list: info.listings.listing }));

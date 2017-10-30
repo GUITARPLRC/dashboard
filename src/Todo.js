@@ -3,8 +3,6 @@ import './Todo.css';
 
 const stitch = require('mongodb-stitch');
 
-// TODO configue mongo stitch to update collection
-
 class Todo extends Component {
 	constructor() {
 		super();
@@ -15,42 +13,44 @@ class Todo extends Component {
 	}
 
 	componentDidMount() {
-		const client = new stitch.StitchClient('dashboard-befkv');
-		const db = client.service('mongodb', 'mongodb-atlas').db('dashboard');
-		client
-			.login()
-			.then(() =>
-				db.collection('list').updateOne({ owner_id: client.authedId() }, { $set: { number: 42 } }, { upsert: true })
-			)
-			.then(() => db.collection('list').find({ owner_id: client.authedId() }))
-			.then(docs => {
-				console.log('Found docs', docs);
-				console.log('[MongoDB Stitch] Connected to Stitch');
-			})
-			.catch(err => {
-				console.error(err);
-			});
+		const stitchClient = new stitch.StitchClient('dashboard-qubgr');
+		const mongoClient = stitchClient.service('mongodb', 'mongodb-atlas');
+		const db = mongoClient.db('dashboard');
+		const coll = db.collection('list');
+
+		coll.find({ owner_id: '59f72a980584297950dc167f' }).then(res => {
+			console.log(res[0].list);
+			if (res[0].list) {
+				this.setState({ list: res[0].list });
+			} else {
+				return;
+			}
+		});
 	}
 
 	updateDB = () => {
-		const client = new stitch.StitchClient('dashboard-befkv');
-		const db = client.service('mongodb', 'mongodb-atlas').db('dashboard');
-		client
+		let list = this.state.list;
+		const stitchClient = new stitch.StitchClient('dashboard-qubgr');
+		const mongoClient = stitchClient.service('mongodb', 'mongodb-atlas');
+		const db = mongoClient.db('dashboard');
+		const coll = db.collection('list');
+		stitchClient
 			.login()
-			.then(() => db.collection('list').insertOne(this.state.list))
 			.then(() => {
-				console.log('saved');
+				coll
+					.updateOne({ owner_id: '59f72a980584297950dc167f' }, { owner_id: '59f72a980584297950dc167f', list })
+					.then(res => console.log(res));
 			})
-			.catch(err => {
-				console.log(err);
-			});
+			.then(() => console.log('success'))
+			.catch(err => console.log(`Error`, err));
 	};
 
 	handleInputChange = e => {
 		this.setState({ input: e.target.value });
 	};
 
-	handleFormSubmit = () => {
+	handleFormSubmit = e => {
+		e.preventDefault();
 		let list = this.state.list;
 		list.push(this.state.input);
 		this.setState({ list, input: '' });
@@ -61,6 +61,7 @@ class Todo extends Component {
 		let list = this.state.list;
 		list.splice(item, 1);
 		this.setState({ list });
+		this.updateDB();
 	};
 
 	render() {
@@ -69,7 +70,6 @@ class Todo extends Component {
 				<form
 					onSubmit={e => {
 						this.handleFormSubmit(e);
-						e.preventDefault();
 					}}
 				>
 					<input value={this.state.input} onChange={this.handleInputChange} />
