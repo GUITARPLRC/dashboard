@@ -19,7 +19,6 @@ class Todo extends Component {
 		const coll = db.collection('list');
 
 		coll.find({ owner_id: '59f72a980584297950dc167f' }).then(res => {
-			console.log(res[0].list);
 			if (res[0].list) {
 				this.setState({ list: res[0].list });
 			} else {
@@ -34,14 +33,12 @@ class Todo extends Component {
 		const mongoClient = stitchClient.service('mongodb', 'mongodb-atlas');
 		const db = mongoClient.db('dashboard');
 		const coll = db.collection('list');
+
 		stitchClient
 			.login()
 			.then(() => {
-				coll
-					.updateOne({ owner_id: '59f72a980584297950dc167f' }, { owner_id: '59f72a980584297950dc167f', list })
-					.then(res => console.log(res));
+				coll.updateOne({ owner_id: '59f72a980584297950dc167f' }, { owner_id: '59f72a980584297950dc167f', list });
 			})
-			.then(() => console.log('success'))
 			.catch(err => console.log(`Error`, err));
 	};
 

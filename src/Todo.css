@@ -20,7 +20,7 @@
 	width: 300px;
 }
 .Todo ul {
-	list-style-type: decimal;
+	list-style-type: disc;
 }
 .Todo ul li {
 	max-width: 300px;
