@@ -14,15 +14,19 @@ class Todo extends Component {
 
 	componentDidMount() {
 		const stitchClient = new stitch.StitchClient('dashboard-qubgr');
+		stitchClient.login();
+
 		const mongoClient = stitchClient.service('mongodb', 'mongodb-atlas');
 		const db = mongoClient.db('dashboard');
 		const coll = db.collection('list');
 
-		coll.find({ owner_id: '59f72a980584297950dc167f' }).then(res => {
-			if (res[0].list) {
-				this.setState({ list: res[0].list });
-			} else {
-				return;
+		coll.find({ owner_id: '59f75213013d3a0000c4d55f' }).then(res => {
+			if (res[0]) {
+				if (res[0].list) {
+					this.setState({ list: res[0].list });
+				} else {
+					return;
+				}
 			}
 		});
 	}
@@ -37,7 +41,7 @@ class Todo extends Component {
 		stitchClient
 			.login()
 			.then(() => {
-				coll.updateOne({ owner_id: '59f72a980584297950dc167f' }, { owner_id: '59f72a980584297950dc167f', list });
+				coll.updateOne({ owner_id: '59f75213013d3a0000c4d55f' }, { owner_id: '59f75213013d3a0000c4d55f', list });
 			})
 			.catch(err => console.log(`Error`, err));
 	};
