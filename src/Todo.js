@@ -13,37 +13,31 @@ class Todo extends Component {
 	}
 
 	componentDidMount() {
-		const stitchClient = new stitch.StitchClient('dashboard-qubgr');
-		stitchClient.login();
+		const client = new stitch.StitchClient('dashboard-pdynh');
+		const db = client.service('mongodb', 'mongodb-atlas').db('dashboard');
 
-		const mongoClient = stitchClient.service('mongodb', 'mongodb-atlas');
-		const db = mongoClient.db('dashboard');
-		const coll = db.collection('list');
-
-		coll.find({ owner_id: '59f75213013d3a0000c4d55f' }).then(res => {
-			if (res[0]) {
-				if (res[0].list) {
-					this.setState({ list: res[0].list });
-				} else {
-					return;
-				}
-			}
-		});
+		client
+			.login()
+			.then(() => db.collection('list').find({ owner_id: 'Chuck' }))
+			.then(res => {
+				this.setState({ list: res[0].list });
+			})
+			.catch(err => {
+				console.error('Init Error', err);
+			});
 	}
 
 	updateDB = () => {
-		let list = this.state.list;
-		const stitchClient = new stitch.StitchClient('dashboard-qubgr');
-		const mongoClient = stitchClient.service('mongodb', 'mongodb-atlas');
-		const db = mongoClient.db('dashboard');
-		const coll = db.collection('list');
+		const list = this.state.list;
 
-		stitchClient
-			.login()
-			.then(() => {
-				coll.updateOne({ owner_id: '59f75213013d3a0000c4d55f' }, { owner_id: '59f75213013d3a0000c4d55f', list });
-			})
-			.catch(err => console.log(`Error`, err));
+		const client = new stitch.StitchClient('dashboard-pdynh');
+		const db = client.service('mongodb', 'mongodb-atlas').db('dashboard');
+		const listCollection = db.collection('list');
+
+		listCollection
+			.updateOne({ owner_id: 'Chuck' }, { $set: { list: list } })
+			.then(res => console.log('Updated'))
+			.catch(err => console.log('Update Error', err));
 	};
 
 	handleInputChange = e => {
@@ -52,7 +46,9 @@ class Todo extends Component {
 
 	handleFormSubmit = e => {
 		e.preventDefault();
+
 		let list = this.state.list;
+
 		list.push(this.state.input);
 		this.setState({ list, input: '' });
 		this.updateDB();
@@ -60,6 +56,7 @@ class Todo extends Component {
 
 	handleDelete = item => {
 		let list = this.state.list;
+
 		list.splice(item, 1);
 		this.setState({ list });
 		this.updateDB();
