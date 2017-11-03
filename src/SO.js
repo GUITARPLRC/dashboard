@@ -13,7 +13,7 @@ class SO extends Component {
 	componentWillMount() {
 		let jobs = [];
 
-		fetch('https://stackoverflow.com/jobs/feed?q=front+end+developer&l=Chicago%2c+IL%2c+United+States&u=Miles&d=20')
+		fetch('https://stackoverflow.com/jobs/feed?q=front+end&l=Chicago%2c+IL%2c+United+States&u=Miles&d=20')
 			.then(res => res.text())
 			.then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
 			.then(data => this.setState({ data }))
