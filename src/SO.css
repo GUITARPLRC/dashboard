@@ -1,0 +1,20 @@
+.SOjobs {
+	background-color: #f48024;
+	border-radius: 10px;
+	color: #fff;
+	height: 780px;
+	margin: 10px 0;
+	overflow-y: scroll;
+	padding: 2px 0;
+	text-align: center;
+	width: 300px;
+}
+a {
+	color: #fff;
+	text-decoration: none;
+}
+.SOjob {
+	border: 1px solid #fff;
+	margin: 10px;
+	padding: 0 0 10px 0;
+}

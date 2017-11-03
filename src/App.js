@@ -4,6 +4,7 @@ import Github from './Github';
 import Githubjobs from './Githubjobs';
 import Weather from './Weather';
 import Authjobs from './Authjobs';
+import SO from './SO';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
 				<Github />
 				<Githubjobs />
 				<Authjobs />
+				<SO />
 			</div>
 		</div>
 	);
