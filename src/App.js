@@ -14,12 +14,18 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>Hello Chuck!</h1>
-			<p>Today is {day}</p>
-			<Weather />
+			<div className="top">
+				<div className="top_left">
+					<h1>Hello Chuck!</h1>
+					<p>Today is {day}</p>
+					<Weather />
+				</div>
+				<div className="top_right">
+					<Github />
+				</div>
+			</div>
 			<div className="components">
 				<Todo />
-				<Github />
 				<Githubjobs />
 				<Authjobs />
 				<SO />

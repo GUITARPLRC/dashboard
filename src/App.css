@@ -2,6 +2,15 @@
 	background-color: rgb(110, 179, 113);
 	padding: 1%;
 }
+.top {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	margin: 0 0 18px 0;
+}
 .App h1 {
 	margin-top: 0;
 }
