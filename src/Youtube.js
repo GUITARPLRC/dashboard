@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Youtube.css';
+
 class Youtube extends Component {
 	constructor() {
 		super();
@@ -14,7 +16,7 @@ class Youtube extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="youtube">
 				<select name="dropdown" onChange={e => this.changeMusic(e)}>
 					<option value="dub">DUB</option>
 					<option value="shinedown">Shinedown</option>
@@ -26,7 +28,6 @@ class Youtube extends Component {
 						height="151"
 						src="http://www.youtube.com/embed/?listType=playlist&list=PLrKMH4J9erlXm8IxCEa6IOXqh4rxcwpGU"
 						frameBorder="0"
-						style={{ margin: '0 10px 0 0' }}
 					/>
 				) : (
 					<iframe
@@ -35,7 +36,6 @@ class Youtube extends Component {
 						height="151"
 						src="http://www.youtube.com/embed/?listType=playlist&list=PLrKMH4J9erlXMEm4o4Fy4KUI0Nrfu9MQq"
 						frameBorder="0"
-						style={{ margin: '0 10px 0 0' }}
 					/>
 				)}
 			</div>

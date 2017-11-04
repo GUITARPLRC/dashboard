@@ -9,10 +9,11 @@
 }
 a {
 	color: #fff;
+	height: 100%;
 	text-decoration: none;
+	width: 100%;
 }
 .SOjob {
 	border: 1px solid #fff;
 	margin: 10px;
-	padding: 0 0 10px 0;
 }
