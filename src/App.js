@@ -5,6 +5,7 @@ import Githubjobs from './Githubjobs';
 import Weather from './Weather';
 import Authjobs from './Authjobs';
 import SO from './SO';
+import Youtube from './Youtube';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
 					<Weather />
 				</div>
 				<div className="top_right">
+					<Youtube />
 					<Github />
 				</div>
 			</div>
