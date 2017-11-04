@@ -24,17 +24,17 @@ class Youtube extends Component {
 				{this.state.music === 'dub' ? (
 					<iframe
 						title="youtube"
-						width="270"
+						width="300"
 						height="151"
-						src="http://www.youtube.com/embed/?listType=playlist&list=PLrKMH4J9erlXm8IxCEa6IOXqh4rxcwpGU"
+						src="http://www.youtube.com/embed/?loop=1&listType=playlist&list=PLrKMH4J9erlXm8IxCEa6IOXqh4rxcwpGU"
 						frameBorder="0"
 					/>
 				) : (
 					<iframe
 						title="youtube"
-						width="270"
+						width="300"
 						height="151"
-						src="http://www.youtube.com/embed/?listType=playlist&list=PLrKMH4J9erlXMEm4o4Fy4KUI0Nrfu9MQq"
+						src="http://www.youtube.com/embed/?loop=1&listType=playlist&list=PLrKMH4J9erlXMEm4o4Fy4KUI0Nrfu9MQq"
 						frameBorder="0"
 					/>
 				)}
