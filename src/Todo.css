@@ -13,11 +13,11 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	max-width: 300px;
+	width: 20%;
 }
 .Todo input {
 	padding: 5px;
-	width: 300px;
+	width: 100%;
 }
 .Todo ul {
 	list-style-type: disc;

@@ -6,6 +6,7 @@ import Weather from './Weather';
 import Authjobs from './Authjobs';
 import SO from './SO';
 import Youtube from './Youtube';
+import Indeed from './Indeed';
 
 import './App.css';
 
@@ -28,9 +29,10 @@ function App() {
 			</div>
 			<div className="components">
 				<Todo />
-				<Githubjobs />
-				<Authjobs />
+				<Indeed />
 				<SO />
+				<Authjobs />
+				<Githubjobs />
 			</div>
 		</div>
 	);
