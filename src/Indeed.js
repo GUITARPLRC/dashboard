@@ -12,7 +12,7 @@ class Indeed extends Component {
 	}
 	componentDidMount() {
 		fetch(
-			'http://rss.indeed.com/rss?q=front+end+web+developer&l=Chicago&jt=fulltime&explvl=entry_level&sort=date'
+			'http://rss.indeed.com/rss?q=front+end+web&l=Chicago&jt=fulltime&explvl=entry_level&sort=date'
 		)
 			.then(res => res.text())
 			.then(str => new window.DOMParser().parseFromString(str, 'text/xml'))

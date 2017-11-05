@@ -7,13 +7,15 @@ class SO extends Component {
 		super();
 		this.state = {
 			data: null,
-			jobs: []
+			jobs: [],
 		};
 	}
 	componentWillMount() {
 		let jobs = [];
 
-		fetch('https://stackoverflow.com/jobs/feed?q=front+end&l=Chicago%2c+IL%2c+United+States&u=Miles&d=20')
+		fetch(
+			'https://stackoverflow.com/jobs/feed?q=front+end+web&l=Chicago%2c+IL%2c+United+States&d=20&u=Miles&sort='
+		)
 			.then(res => res.text())
 			.then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
 			.then(data => this.setState({ data }))
@@ -24,12 +26,14 @@ class SO extends Component {
 				for (let i = 0; i < elements.length; i++) {
 					let link = elements[i].querySelector('link').textContent;
 					let title = elements[i].querySelector('title').textContent;
-					let date = elements[i].querySelector('pubDate').textContent.slice(5, 11);
+					let date = elements[i]
+						.querySelector('pubDate')
+						.textContent.slice(5, 11);
 
 					jobs.push({
 						link,
 						title,
-						date
+						date,
 					});
 				}
 
