@@ -7,13 +7,11 @@ class Indeed extends Component {
 		super();
 		this.state = {
 			info: null,
-			jobs: [],
+			jobs: []
 		};
 	}
 	componentDidMount() {
-		fetch(
-			'http://rss.indeed.com/rss?q=front+end+web&l=Chicago&jt=fulltime&explvl=entry_level&sort=date'
-		)
+		fetch('http://rss.indeed.com/rss?q=front+end+web&l=Chicago&jt=fulltime&explvl=entry_level&sort=date')
 			.then(res => res.text())
 			.then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
 			.then(info => this.setState({ info }))
@@ -40,7 +38,7 @@ class Indeed extends Component {
 			<div className="Indeedjobs">
 				<h3>
 					<a
-						href="https://stackoverflow.com/jobs?q=front+end+developer&l=Chicago%2c+IL%2c+United+States&d=20&u=Miles&sort=p"
+						href="https://www.indeed.com/jobs?q=front+end+developer&l=wheeling%2C+il"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

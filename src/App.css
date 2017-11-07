@@ -1,6 +1,6 @@
 .App {
 	background-color: rgb(110, 179, 113);
-	height: 90%;
+	min-height: 96vh;
 	padding: 1%;
 }
 .top {

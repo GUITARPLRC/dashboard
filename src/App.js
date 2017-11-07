@@ -1,41 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Todo from './Todo';
 import Github from './Github';
-import Githubjobs from './Githubjobs';
 import Weather from './Weather';
-import Authjobs from './Authjobs';
-import SO from './SO';
 import Youtube from './Youtube';
-import Indeed from './Indeed';
+import Components from './Components';
 
 import './App.css';
 
-function App() {
-	let today = new Date();
-	let day = today.toLocaleDateString();
+class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			date: null
+		};
+	}
+	componentDidMount() {
+		let today = new Date();
+		let day = today.toLocaleDateString();
+		this.setState({ date: day });
+	}
 
-	return (
-		<div className="App">
-			<div className="top">
-				<div className="top_left">
-					<h1>Hello Chuck!</h1>
-					<p>Today is {day}</p>
-					<Weather />
+	render() {
+		return (
+			<div className="App">
+				<div className="top">
+					<div className="top_left">
+						<h1>Hello Chuck!</h1>
+						<p>Today is {this.state.date}</p>
+						<Weather />
+					</div>
+					<div className="top_right">
+						<Todo />
+						<Youtube />
+						<Github />
+					</div>
 				</div>
-				<div className="top_right">
-					<Youtube />
-					<Github />
-				</div>
+				<Components />
 			</div>
-			<div className="components">
-				<Todo />
-				<Indeed />
-				<SO />
-				<Authjobs />
-				<Githubjobs />
-			</div>
-		</div>
-	);
+		);
+	}
 }
 
 export default App;

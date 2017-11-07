@@ -32,7 +32,7 @@ class Authjobs extends Component {
 							<a href={each.url} target="_blank" rel="noopener noreferrer">
 								<h4>{each.title}</h4>
 								<h6>{each.type.name}</h6>
-								<p>{each.post_date.slice(5, 9)}</p>
+								<p>{each.post_date.slice(5, 10)}</p>
 								<p>{each.company.name}</p>
 							</a>
 						</div>

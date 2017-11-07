@@ -70,7 +70,7 @@ class Todo extends Component {
 						this.handleFormSubmit(e);
 					}}
 				>
-					<input value={this.state.input} onChange={this.handleInputChange} />
+					<input value={this.state.input} onChange={this.handleInputChange} placeholder="add TODO" />
 				</form>
 				{this.state.list && (
 					<div className="list">

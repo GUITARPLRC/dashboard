@@ -1,5 +1,5 @@
-.SOjobs {
-	background-color: #f48024;
+.Craigsjobs {
+	background-color: #00e;
 	color: #fff;
 	height: 76vh;
 	overflow-y: scroll;
@@ -13,7 +13,7 @@ a {
 	text-decoration: none;
 	width: 100%;
 }
-.SOjob {
+.craigjob {
 	border: 1px solid #fff;
 	margin: 10px;
 }
